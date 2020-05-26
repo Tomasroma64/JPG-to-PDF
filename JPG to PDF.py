@@ -1,15 +1,21 @@
 from fpdf import FPDF
 from PIL import Image
 import os
+import argparse
+import sys
 
 pdf = FPDF()
 imagelist = []                                                 # Contains the list of all images to be converted to PDF.
 
 
 # --------------- USER INPUT -------------------- #
+parser = argparse.ArgumentParser(description="Make a PDF from JPG photos")
+parser.add_argument("folder_name", type=str, help="Folder name where the photos are found")
+parser.add_argument("pdf_name", type=str, help="Name of the output PDF")
+args = parser.parse_args()
 
-folder = ""                                                    # Folder containing all the images.
-name = ""                                                      # Name of the output PDF file.
+folder = args.folder_name
+name = args.pdf_name
 
 
 # ------------- ADD ALL THE IMAGES IN A LIST ------------- #
